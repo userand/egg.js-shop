@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="refresh" content="2;url=<%=url%>">
+    <title>操作成功</title>
+    <link rel="stylesheet" type="text/css" href="/public/admin/layui/css/layui.css" />
+    <link rel="stylesheet" type="text/css" href="/public/admin/css/login.css" />
+</head>
+
+<body>
+    <div class="alert alert-info">
+        <div><b>
+                <%=msg%>
+        </div>
+        <div>如果您不做出选择，将在 2秒后跳转到第一个链接地址。</div>
+    </div>
+</body>
+
+</html>
+
+
+<style>
+    html,
+    body {
+        background: #f1f1f1;
+        height: 100%;
+        width: 100%;
+        display: flex;
+    }
+
+    .alert-info {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert {
+        margin: auto;
+        padding: .75rem 1.25rem;
+        border-radius: 5px;
+        border: 1px solid transparent;
+        text-align: center
+    }
+</style>
