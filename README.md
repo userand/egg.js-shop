@@ -1,4 +1,4 @@
-# shop
+# 一个egg.js+mongodb开发的商城系统
 
 ### 开始
 
