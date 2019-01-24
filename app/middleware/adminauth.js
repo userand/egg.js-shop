@@ -6,7 +6,8 @@ module.exports = (options, app) => {
         //post提交设置全局csrf
         ctx.state.csrf = ctx.csrf;
         if (ctx.session.userinfo) {
-
+            ctx.state.userinfo=ctx.session.userinfo;  //全局变量            
+            await next();
             
         } else {
             const pathName =  url.parse(ctx.request.url).pathname;

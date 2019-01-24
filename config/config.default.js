@@ -20,6 +20,15 @@ module.exports = appInfo => {
     match: '/admin'
   }
 
+
+  exports.mongoose = {
+    client: {
+      url: 'mongodb://127.0.0.1/shop',
+      options: {},
+    }
+  };
+  
+
   //配置模板引擎
   config.view = {
     mapping: {

@@ -4,19 +4,11 @@ const Controller = require('egg').Controller;
 
 class BaseController extends Controller {
   //操作成功提示
-  async success(url, msg) {
-    await this.ctx.render('admin/public/success', {
-      url,
-      msg: msg || '操作成功'
-    })
-  }
-
- //操作失败提示
-  async fail(url,msg) {
-    await this.ctx.render('admin/public/fail', {
-      url,
-      msg: msg || '操作失败'
-    })
+  async messageNotify(result, msg) {
+    this.ctx.body = {
+      result,
+      msg
+    }
   }
 
   //验证码
@@ -26,7 +18,7 @@ class BaseController extends Controller {
     this.ctx.response.type = 'image/svg+xml';
     this.ctx.body = captcha.data;
   }
-  
+
 }
 
 module.exports = BaseController;

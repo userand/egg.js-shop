@@ -1,0 +1,110 @@
+@charset "utf-8";
+
+/* user login.css */
+
+html,
+body {
+  height: 100%
+}
+
+.btn-danger {
+  background-color: rgb(189, 8, 28);
+  border-color: rgb(189, 8, 28);
+  &:hover,
+  &:focus,
+  &:active,
+  &.active {
+    background-color: #d50c22;
+    border-color: #d50c22;
+  }
+}
+body {
+  font-size: 14px;
+  position: relative;
+  background-color: #efefef
+}
+
+.iconpic-logo {
+  width: 50px;
+  height: 50px;
+  background-image: url(../images/logo.jpeg);
+  background-size: 100% auto;
+}
+
+.login-wraper {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  .login-form {
+    position: fixed;
+    width: 340px;
+    background-color: #fff;
+    text-align: center;
+    border-radius: 8px;
+    left: 50%;
+    top: 50px;
+    margin-left: -200px;
+    padding: 30px;
+    .form {
+      width: 240px;
+      margin: auto;
+      .form-title {
+        color: #555;
+        font-size: 30px;
+        margin-top: 10px;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        letter-spacing: -1.2px;
+      }
+      .row {
+        position: relative;
+        margin-top: 20px;
+        .input-text {
+          border: 0;
+          padding-left: 13px;
+          padding-right: 13px;
+          background-color: #f0f0f0;
+          &.error {
+            background-color: rgb(250,255,189);
+          }
+        }
+        label.error {
+          background-color: #fff;
+          color: #000;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+          -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.45);
+          min-width: 180px;
+          padding: 10px;
+          border-radius: 8px;
+          left: 103%;
+          right: auto;
+          text-align: left;
+          top: 0;
+          display: none;
+          &:before,
+          &:after {
+            position: absolute;
+            top: 11px;
+            left: -16px;
+            right: 100%;
+            width: 0;
+            height: 0;
+            display: block;
+            content: " ";
+            border-color: transparent;
+            border-style: solid solid outset;
+            pointer-events: none;
+          }
+          &:before {
+            border-right-color: #fff;
+            border-width: 8px;
+          }
+        }
+      }
+    }
+  }
+}
