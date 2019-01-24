@@ -1,0 +1,43 @@
+<%- include ../public/_meta.html %>
+
+
+<section class="Hui-admin-article-wrapper">
+	<article class="clearfix pd-20">
+			<form action="" method="post" class="form form-horizontal" id="form-role-edit">
+				<input type="hidden" name="_csrf" value="<%=csrf%>" />
+				<input type="hidden" name="_id" value="<%=list._id%>" />
+				<div class="row clearfix">
+					<label class="form-label col-xs-2 col-sm-3">角色名称：</label>
+					<div class="form-controls col-xs-10 col-sm-9">
+						<input type="text" class="input-text" value="<%=list.title%>" placeholder="" id="title" name="title">
+					</div>
+				</div>
+				<div class="row clearfix">
+					<label class="form-label col-xs-2 col-sm-3">角色描述：</label>
+					<div class="form-controls col-xs-10 col-sm-9">
+						<textarea name="description" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" ><%=list.description%></textarea>
+						
+					</div>
+				</div>
+				<div class="row clearfix">
+					<div class="col-xs-8 col-sm-9 col-xs-offset-5 col-sm-offset-3">
+						<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+					</div>
+				</div>
+			</form>
+		</article>
+</section>
+
+</div>
+
+<%- include ../public/_footer.html %>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="/public/admin/module/role.js"></script>
+
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+</html>

@@ -374,7 +374,7 @@ function admin_add(title,url){
 		type: 2,
 		title: title,
 		content: url,
-    area: ['500px', '400px']
+    area: ['600px', '500px']
 	});
 }
 /*管理员-删除*/
@@ -450,7 +450,8 @@ function admin_role_add(title,url){
   var index = layer.open({
 		type: 2,
 		title: title,
-		content: url
+    content: url,
+    area: ['600px', '300px']
 	});
 }
 
@@ -459,7 +460,8 @@ function admin_role_edit(title,url,id){
   var index = layer.open({
 		type: 2,
 		title: title,
-		content: url
+    content: url,
+    area: ['600px', '300px']
 	});
 }
 

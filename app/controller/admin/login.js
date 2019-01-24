@@ -29,5 +29,11 @@ class LoginController extends BaseController {
          this.messageNotify(1, '验证码不正确')
       }
    }
+   //退出登录
+   async loginout() {
+      this.ctx.session.userinfo=null;
+      this.ctx.redirect('/admin/login');
+    }
+  
 }
 module.exports = LoginController;

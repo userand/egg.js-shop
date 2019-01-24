@@ -1,0 +1,76 @@
+<%- include ../public/_meta.html %>
+<%- include ../public/_menu.html %>
+
+<section class="Hui-admin-article-wrapper">
+	<%- include ../public/_header.html %>
+	<div class="Hui-admin-article">
+		<nav class="breadcrumb" style="background-color:#fff;padding: 0 24px">
+			首页
+			<span class="c-gray en">/</span>
+			角色管理
+			<span class="c-gray en">/</span>
+			角色列表
+		</nav>
+
+		<article class="Hui-admin-content clearfix">
+			<div class="panel mt-20">
+				<div class="panel-body">
+					<div class="clearfix">
+						<span class="f-l">
+							<!-- <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i>
+								批量删除</a> -->
+							<a href="javascript:;" onclick="admin_role_add('添加角色','/admin/role/add')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i>
+								添加角色</a>
+						</span>
+						<!-- <span class="f-r">共有数据：<strong>54</strong> 条</span> -->
+					</div>
+					<div class="mt-20 clearfix">
+						<table class="table table-border table-bordered table-bg table-hover table-sort">
+							<thead>
+								<tr>
+									<th scope="col" colspan="9">角色列表</th>
+								</tr>
+								<tr class="text-c">
+									<th width="150">角色名称</th>
+									<th width="90">描述</th>
+									<th width="150">添加时间</th>
+									<th width="150">操作</th>
+								</tr>
+							</thead>
+							<tbody>
+								<%for(var i=0;i<list.length;i++){%>
+								<tr class="text-c">
+									<td><%=list[i].title%></td>
+									<td><%=list[i].description%></td>
+									<td class="text-c"><%=list[i].add_time%></td>
+									<td class="text-c">
+										 <a title="编辑" href="javascript:;" onclick="admin_role_edit('角色编辑','/admin/role/edit?id=<%=list[i]._id%>','1','800','500')"class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i></a> 
+										 <a title="删除" href="javascript:;" onclick="admin_del(this,'1')" class="ml-5" style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a></td>
+								</tr>
+								<%}%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</article>
+	</div>
+</section>
+
+</div>
+
+<%- include ../public/_footer.html %>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/public/admin/lib/datatables/1.10.15/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/public/admin/lib/laypage/1.2/laypage.js"></script>
+<script type="text/javascript" src="/public/admin/static/business/js/main.js"></script>
+<script type="text/javascript">
+	$(function () {
+		runDatetimePicker();
+	});
+</script>
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>
