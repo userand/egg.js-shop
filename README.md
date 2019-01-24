@@ -1,12 +1,6 @@
 # shop
 
-## QuickStart
-
-<!-- add docs here for user -->
-
-see [egg docs][egg] for more detail.
-
-### Development
+### 开始
 
 ```bash
 $ npm i
