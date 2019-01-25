@@ -55,7 +55,7 @@ $(function () {
                             parent.location.replace(parent.location.href)
                             parent.layer.close(index);
                             window.location.href = '/admin/role'
-                        },1000)
+                        },500)
                     }
                 }
             })
