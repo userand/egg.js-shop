@@ -394,17 +394,31 @@ function admin_add(title, url) {
         type: 2,
         title: title,
         content: url,
-        area: ['600px', '500px']
+        area: ['600px', '400px']
     });
 }
 
 /*管理员-删除*/
-function admin_del(obj, id) {
+function admin_del(obj, id, model) {
     layer.confirm('确认要删除吗？', function (index) {
         //此处请求后台程序，下方是成功后的前台处理……
+        $.ajax({
+            url: '/admin/delete',
+            type: 'get',
+            data: {
+                id: id,
+                model: model
+            },
+            success: function (res) {
+                layer.msg(res.msg)
+                if (res.result == 0) {
+                    window.location.href = '/admin/manager'
+                    $(obj).parents("tr").remove();
+                    layer.msg(res.msg(), {icon: 1, time: 1000});
 
-        $(obj).parents("tr").remove();
-        layer.msg('已删除!', {icon: 1, time: 1000});
+                }
+            }
+        })
     });
 }
 
@@ -414,7 +428,7 @@ function admin_edit(title, url, id) {
         type: 2,
         title: title,
         content: url,
-        area: ['500px', '400px']
+        area: ['600px', '400px']
     });
 }
 
@@ -504,6 +518,7 @@ function admin_role_del(obj, id, model) {
             success: function (res) {
                 layer.msg(res.msg)
                 if (res.result == 0) {
+                    window.location.href = '/admin/role'
                     $(obj).parents("tr").remove();
                     layer.msg(res.msg(), {icon: 1, time: 1000});
                 }

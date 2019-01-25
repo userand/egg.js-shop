@@ -21,7 +21,7 @@ module.exports = appInfo => {
   }
 
 
-  exports.mongoose = {
+    config.mongoose = {
     client: {
       url: 'mongodb://127.0.0.1/shop',
       options: {},

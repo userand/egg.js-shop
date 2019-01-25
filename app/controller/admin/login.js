@@ -11,8 +11,7 @@ class LoginController extends BaseController {
    async dologin() {
       const requestBody = this.ctx.request.body;
       const username = requestBody.username;
-      const password = requestBody.password;
-      //  const password = await this.ctx.service.tools.md5( requestBody.password );
+      const password = await this.ctx.service.tools.md5( requestBody.password );
       const verity = requestBody.verity;
       if (verity.toUpperCase() == this.ctx.session.verifycode.toUpperCase()) {
          const result = await this.ctx.model.Admin.find({
