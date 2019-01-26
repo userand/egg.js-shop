@@ -45,13 +45,18 @@
                                 <td><%=list[i].description%></td>
                                 <td class="text-c"><%=list[i].add_time%></td>
                                 <td class="text-c">
+                                    <a title="授权" href="javascript:;"
+                                       onclick="admin_role_edit('角色授权','/admin/role/edit?id=<%=list[i]._id%>','1','800','500')"
+                                       class="btn btn-success radius ml-5" style="text-decoration:none"><i
+                                            class="Hui-iconfont">&#xe62b;</i> 授权</a>
+
                                     <a title="编辑" href="javascript:;"
                                        onclick="admin_role_edit('角色编辑','/admin/role/edit?id=<%=list[i]._id%>','1','800','500')"
                                        class="btn btn-primary radius ml-5" style="text-decoration:none"><i
-                                            class="Hui-iconfont">&#xe6df;</i> </a>
+                                            class="Hui-iconfont">&#xe6df;</i> 编辑</a>
                                     <a title="删除" href="javascript:;"
                                        onclick="admin_role_del(this,'<%=list[i]._id%>','Role')" class="btn btn-danger radius ml-5"
-                                       style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i> </a></td>
+                                       style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i> 删除</a></td>
                             </tr>
                             <%}%>
                             </tbody>

@@ -34,7 +34,9 @@ module.exports = app => {
     //权限路由
     router.get('/admin/access', controller.admin.access.list);
     router.get('/admin/access/add', controller.admin.access.add);
+    router.post('/admin/access/doAdd', controller.admin.access.doAdd);
     router.get('/admin/access/edit', controller.admin.access.edit);
+    router.post('/admin/access/doEdit', controller.admin.access.doEdit);
 
 
     //验证码路由

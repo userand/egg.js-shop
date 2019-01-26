@@ -1,59 +1,80 @@
 <%- include ../public/_meta.html %>
 
-
 <section class="Hui-admin-article-wrapper">
-	
 	<article class="clearfix pd-20">
-			<form action="" method="post" class="form form-horizontal" id="form-admin-add">
-				<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3"><span class="c-red">*</span>管理员：</label>
-					<div class="form-controls col-xs-10 col-sm-9">
-						<input type="text" class="input-text" value="" placeholder="" id="adminName" name="adminName">
-					</div>
+		<form action="" method="post" class="form form-horizontal" id="form-access-edit">
+			<input type="hidden" name="_csrf" value="<%=csrf%>" />
+			<input type="hidden" name="id" value="<%=list._id%>" />
+			<div class="row clearfix">
+				<label class="form-label col-xs-2 col-sm-3"><span class="c-red">*</span>模块名称</label>
+				<div class="form-controls col-xs-10 col-sm-9">
+					<input type="text" class="input-text" value="<%=list.module_name%>" placeholder="" id="module_name" name="module_name">
 				</div>
-				<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3"><span class="c-red">*</span>密码：</label>
-					<div class="form-controls col-xs-10 col-sm-9">
-						<input type="password" class="input-text" autocomplete="off" value="" placeholder="密码" id="password" name="password">
-					</div>
-				</div>
-				<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3"><span class="c-red">*</span>手机：</label>
-					<div class="form-controls col-xs-10 col-sm-9">
-						<input type="text" class="input-text" value="" placeholder="" id="phone" name="phone">
-					</div>
-				</div>
-				<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3"><span class="c-red">*</span>邮箱：</label>
-					<div class="form-controls col-xs-10 col-sm-9">
-						<input type="text" class="input-text" placeholder="@" name="email" id="email">
-					</div>
-				</div>
-				<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3">角色：</label>
-					<div class="form-controls col-xs-10 col-sm-9"> <span class="select-box" style="width:150px;">
-						<select class="select" name="adminRole" size="1">
-							<option value="0">超级管理员</option>
-							<option value="1">总编</option>
-							<option value="2">栏目主辑</option>
-							<option value="3">栏目编辑</option>
+			</div>
+			<div class="row clearfix">
+				<label class="form-label col-xs-2 col-sm-3">节点类型</label>
+				<div class="form-controls col-xs-10 col-sm-9">
+					<span class="select-box" style="width:250px;">
+						<select class="select" name="type" size="1">
+							<option value="1" <%if(list.type==1){%> selected <%}%>> 模块</option>
+							<option value="2" <%if(list.type==2){%> selected <%}%>>菜单</option>
+							<option value="3" <%if(list.type==3){%> selected <%}%>>操作</option>
 						</select>
-						</span> </div>
+					</span>
 				</div>
-				<div class="row clearfix">
-					<label class="form-label col-xs-2 col-sm-3">备注：</label>
+			</div>
+			<div class="row clearfix">
+				<label class="form-label col-xs-2 col-sm-3">操作名称</label>
+				<div class="form-controls col-xs-10 col-sm-9">
+					<input type="text" class="input-text" value="<%=list.action_name%>" placeholder="" id="action_name" name="action_name">
+				</div>
+			</div>
+			<div class="row clearfix">
+				<label class="form-label col-xs-2 col-sm-3">操作地址</label>
+				<div class="form-controls col-xs-10 col-sm-9">
+					<input type="text" class="input-text" value="<%=list.url%>"  name="url" id="url">
+				</div>
+			</div>
+
+
+
+			<div class="row clearfix">
+				<label class="form-label col-xs-2 col-sm-3">所属模块</label>
+				<div class="form-controls col-xs-10 col-sm-9">
+					<span class="select-box" style="width:250px;">
+						<select class="select" name="module_id" size="1">
+								<option value="0"  <%if(list.module==0){%> selected <%}%>>--顶级模块--</option>
+								<%for(var i=0; i<moduleList.length;i++){%>
+									<%if( list.module_id.toString()==moduleList[i]._id.toString()){%>
+										<option value="<%=moduleList[i]._id%>" selected><%=moduleList[i].module_name%></option>
+									<%}else{%>
+										<option value="<%=moduleList[i]._id%>"><%=moduleList[i].module_name%></option>
+									<%}%>	
+								<%}%>
+						</select>
+					</span>
+				</div>
+			</div>
+			<div class="row clearfix">
+					<label class="form-label col-xs-2 col-sm-3">排序</label>
 					<div class="form-controls col-xs-10 col-sm-9">
-						<textarea name="remarks" cols="" rows="" class="textarea"  placeholder="说点什么...100个字符以内" dragonfly="true" onKeyUp="textarealength(this,100)"></textarea>
-						<p class="textarea-numberbar"><em class="textarea-length">0</em>/100</p>
+						<input type="text" class="input-text" value="<%=list.sort%>"  name="sort" id="sort">
 					</div>
 				</div>
-				<div class="row clearfix">
-					<div class="col-xs-8 col-sm-9 col-xs-offset-5 col-sm-offset-3">
-						<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
-					</div>
+
+			<div class="row clearfix">
+				<label class="form-label col-xs-2 col-sm-3">备注：</label>
+				<div class="form-controls col-xs-10 col-sm-9">
+					<textarea name="description" cols="" rows="" class="textarea" placeholder="说点什么...100个字符以内" ><%=list.description%></textarea>
 				</div>
-			</form>
-		</article>
+			</div>
+			<div class="row clearfix">
+				<div class="col-xs-8 col-sm-9 col-xs-offset-5 col-sm-offset-3">
+					<input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;提交&nbsp;&nbsp;">
+				</div>
+			</div>
+		</form>
+	</article>
 </section>
 
 </div>
@@ -64,8 +85,8 @@
 <script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
 <script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
 <script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
-<script type="text/javascript" src="/public/admin/module/manager.js"></script>
-
+<script type="text/javascript" src="/public/admin/module/access.js"></script>
 <!--/请在上方写此页面业务相关的脚本-->
 </body>
+
 </html>

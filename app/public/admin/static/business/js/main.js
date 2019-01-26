@@ -461,7 +461,8 @@ function admin_permission_add(title, url) {
     var index = layer.open({
         type: 2,
         title: title,
-        content: url
+        content: url,
+        area: ['600px', '550px']
     });
 }
 
@@ -470,7 +471,8 @@ function admin_permission_edit(title, url, id) {
     var index = layer.open({
         type: 2,
         title: title,
-        content: url
+        content: url,
+        area: ['600px', '550px']
     });
 }
 
