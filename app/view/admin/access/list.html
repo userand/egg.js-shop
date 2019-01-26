@@ -39,7 +39,7 @@
 									<th>操作名称</th>
 									<th>排序</th>
 									<th>描述</th>
-									<th width="200">操作</th>
+									<th width="155">操作</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -47,7 +47,7 @@
 								<tr class="text-c">
 
 									<td>
-											<%=list[i].module_name%>
+											<span style="color:red"><%=list[i].module_name%></span>
 									</td>
 									<td>
 										<%if(list[i].type==1){%>
@@ -71,10 +71,9 @@
 									<td class="text-c">
 										<%=list[i].description%>
 									</td>
-									<td class="f-14"><a title="编辑" class="btn btn-primary radius" href="javascript:;" onclick="admin_permission_edit('权限编辑','/admin/access/edit?id=<%=list[i]._id%>','1')"
+									<td class="text-l f-14"><a title="编辑" class="btn btn-primary radius" href="javascript:;" onclick="admin_permission_edit('权限编辑','/admin/access/edit?id=<%=list[i]._id%>','1')"
 										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i> 编辑</a>
-										<a title="删除" href="javascript:;" onclick="article_category_del(this,'1')" class="btn btn-danger radius ml-5"
-										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i> 删除</a></td>
+										</td>
 								</tr>
 
 
@@ -107,9 +106,9 @@
 										<%=list[i].items[j].description%>
 									</td>
 
-									<td class="f-14"><a title="编辑" class="btn btn-primary radius" href="javascript:;" onclick="admin_permission_edit('权限编辑','/admin/access/edit?id=<%=list[i].items[j]._id%>','1')"
+									<td class="f-14 text-l"><a title="编辑" class="btn btn-primary radius" href="javascript:;" onclick="admin_permission_edit('权限编辑','/admin/access/edit?id=<%=list[i].items[j]._id%>','1')"
 										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6df;</i> 编辑</a>
-										<a title="删除" href="javascript:;" onclick="article_category_del(this,'1')" class="btn btn-danger radius ml-5"
+										<a title="删除" href="javascript:;" onclick="admin_permission_del(this,'<%=list[i].items[j]._id%>','Access')" class="btn btn-danger radius ml-5"
 										 style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i> 删除</a></td>
 								</tr>
 								<%}%>

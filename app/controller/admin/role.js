@@ -45,6 +45,48 @@ class RoleController extends BaseController {
     await this.messageNotify(0, '角色修改成功')
   }
 
-}
+  //渲染角色授权页面
+  async auth(){
+    const role_id = this.ctx.request.query.id;
+    const accessList = await this.ctx.model.Access.aggregate([
+      {
+        $lookup: {
+          from: 'access',
+          localField: '_id',
+          foreignField: 'module_id',
+          as: 'items'
+        }
+      }, {
+        $match: {
+          'module_id': '0'
+        }
+      }
+    ]);
 
+    await this.ctx.render('admin/role/auth',{
+      role_id,
+      list:accessList
+    })
+  }
+
+  //角色授权
+  async doAuth(){
+    const role_id = this.ctx.request.body.role_id;
+    const access_node = this.ctx.request.body.access_node;
+      await this.ctx.model.RoleAccess.deleteMany({ role_id });
+      if(access_node==undefined){
+         await this.messageNotify(1, '请选择您要授权的模块')
+      }else{
+        for (let i = 0; i < access_node.length; i++) {
+          const roleAccessData = new this.ctx.model.RoleAccess({
+              role_id,
+              access_id:access_node[i]
+          });
+          roleAccessData.save();
+        }
+        await  this.messageNotify(0, '授权成功')
+      }
+  }
+
+}
 module.exports = RoleController;

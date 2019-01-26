@@ -34,7 +34,6 @@ class AccessController extends BaseController {
     })
   }
 
-
   //添加权限
   async doAdd() {
     const postData = this.ctx.request.body;
@@ -61,16 +60,17 @@ class AccessController extends BaseController {
 
   //修改权限
   async doEdit() {
-    
-    const postData =  this.ctx.request.body;
-
-    //const result = new this.ctx.model.Access.updateOne({})
-    console.log(postData)
-
+    const postData = this.ctx.request.body;
+    const module_id = postData.module_id;
+    const id = postData.id;
+    //如果当前不是模块则需要转换module_id的类型为ObjectId
+    if (module_id != 0) {
+      postData.module_id = this.app.mongoose.Types.ObjectId(module_id)
+    }
+    await this.ctx.model.Access.updateOne({"_id":id},postData)
+    await this.messageNotify(0, '权限修改成功');
   }
   
-
-
 }
 
 module.exports = AccessController;

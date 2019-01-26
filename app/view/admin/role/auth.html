@@ -1,0 +1,46 @@
+<%- include ../public/_meta.html %>
+
+<form id="form-role-auth">
+    <input type="hidden" name="_csrf" value="<%=csrf%>" />
+    <input type="hidden" name="role_id" value="<%=role_id%>" />
+    <table class="table table-border table-bordered table-hover table-bg table-sort">
+        <thead>
+            <tr>
+                <th scope="col" colspan="9">角色授权</th>
+            </tr>
+        </thead>
+        <tbody>
+            <%for(var i=0; i<list.length;i++){%>
+            <tr class="text-l">
+                <td width="200px" style="background:#f5fafe">
+
+                    <label> <input type="checkbox" value="<%=list[i]._id%>" name="access_node[]"> <%=list[i].module_name%></label>
+
+                </td>
+                <td>
+                    <%for(var j=0; j<list[i].items.length; j++){%>
+                    <label> <input type="checkbox" value="<%=list[i].items[j]._id%>" name="access_node[]"> <%=list[i].items[j].action_name%> </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <%}%>
+                </td>
+            </tr>
+            <%}%>
+        </tbody>
+    </table>
+    <div class="text-c" style="margin-top:30px">
+        <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确认授权&nbsp;&nbsp;">
+    </div>
+
+</form>
+
+<%- include ../public/_footer.html %>
+
+<!--请在下方写此页面业务相关的脚本-->
+<script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/jquery.validate.js"></script>
+<script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/validate-methods.js"></script>
+<script type="text/javascript" src="/public/admin/lib/jquery.validation/1.14.0/messages_zh.js"></script>
+<script type="text/javascript" src="/public/admin/module/role.js"></script>
+
+<!--/请在上方写此页面业务相关的脚本-->
+</body>
+
+</html>

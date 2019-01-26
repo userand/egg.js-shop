@@ -477,10 +477,24 @@ function admin_permission_edit(title, url, id) {
 }
 
 /*管理员-权限-删除*/
-function admin_permission_del(obj, id) {
+function admin_permission_del(obj, id,model) {
     layer.confirm('角色删除须谨慎，确认要删除吗？', function (index) {
-        $(obj).parents("tr").remove();
-        layer.msg('已删除!', {icon: 1, time: 1000});
+        $.ajax({
+            url: '/admin/delete',
+            type: 'get',
+            data: {
+                id: id,
+                model: model
+            },
+            success: function (res) {
+                layer.msg(res.msg)
+                if (res.result == 0) {
+                    window.location.href = '/admin/access'
+                    $(obj).parents("tr").remove();
+                    layer.msg(res.msg(), {icon: 1, time: 1000});
+                }
+            }
+        })
     });
 }
 
@@ -503,6 +517,16 @@ function admin_role_edit(title, url, id) {
         title: title,
         content: url,
         area: ['600px', '300px']
+    });
+}
+
+/*管理员-角色-授权*/
+function admin_role_auth(title, url, id) {
+    var index = layer.open({
+        type: 2,
+        title: title,
+        content: url,
+        area: ['1000px', '800px']
     });
 }
 

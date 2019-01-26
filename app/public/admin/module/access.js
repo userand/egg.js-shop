@@ -41,7 +41,7 @@ $(function () {
         focusCleanup: true,
         success: "valid",
         submitHandler: function (form) {
-            console.log( $("#form-access-edit").serialize())
+            console.log($("#form-access-edit").serialize())
             $.ajax({
                 url: '/admin/access/doEdit',
                 type: 'post',
@@ -49,14 +49,13 @@ $(function () {
                 success: function (res) {
                     layer.msg(res.msg)
                     if (res.result == 0) {
-
-                        // layer.msg(res.msg)
-                        // setTimeout(function(){
-                        //     var index = parent.layer.getFrameIndex(window.name);
-                        //     parent.location.replace(parent.location.href)
-                        //     parent.layer.close(index);
-                        //     window.location.href = '/admin/access'
-                        // },500)
+                        layer.msg(res.msg)
+                        setTimeout(function () {
+                            var index = parent.layer.getFrameIndex(window.name);
+                            parent.location.replace(parent.location.href)
+                            parent.layer.close(index);
+                            window.location.href = '/admin/access'
+                        }, 500)
                     }
                 }
             })
