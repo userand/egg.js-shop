@@ -14,12 +14,12 @@
             <tr class="text-l">
                 <td width="200px" style="background:#f5fafe">
 
-                    <label> <input type="checkbox" value="<%=list[i]._id%>" name="access_node[]"> <%=list[i].module_name%></label>
+                    <label> <input type="checkbox" <%if(list[i].checked){%> checked <%}%> value="<%=list[i]._id%>" name="access_node[]"> <%=list[i].module_name%></label>
 
                 </td>
                 <td>
                     <%for(var j=0; j<list[i].items.length; j++){%>
-                    <label> <input type="checkbox" value="<%=list[i].items[j]._id%>" name="access_node[]"> <%=list[i].items[j].action_name%> </label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <label> <input type="checkbox" <%if(list[i].items[j].checked){%> checked <%}%> value="<%=list[i].items[j]._id%>" name="access_node[]"> <%=list[i].items[j].action_name%> </label> &nbsp;&nbsp;&nbsp;&nbsp;
                     <%}%>
                 </td>
             </tr>

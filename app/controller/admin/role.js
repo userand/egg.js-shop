@@ -63,6 +63,24 @@ class RoleController extends BaseController {
       }
     ]);
 
+    //获取当前角色拥有的权限id
+    const accessResult = await this.ctx.model.RoleAccess.find({"role_id":role_id});
+    const roleAccessArr = [];
+    accessResult.forEach(item=>{
+      roleAccessArr.push(item.access_id.toString())
+    })
+
+    for(let i=0;i<accessList.length;i++){
+      if(roleAccessArr.indexOf(accessList[i]._id.toString() ) != -1 ){
+          accessList[i].checked = true
+      }
+      for(let j=0;j<accessList[i].items.length;j++){
+        if(roleAccessArr.indexOf(accessList[i].items[j]._id.toString() ) != -1 ){
+          accessList[i].items[j].checked = true
+        }
+      }
+    }
+
     await this.ctx.render('admin/role/auth',{
       role_id,
       list:accessList
